@@ -2,6 +2,10 @@
 
 ---
 
+### [Executive Report](https://drive.google.com/file/d/1D4iKgPak5PjN5o1552m2s3fMV2Z20Rl0/view?usp=sharing)
+
+---
+
 ## Background and Overview
 
 Procurement and merchandising teams in a distribution business carry a recurring problem: supplier quality data is collected, but it lives in a form nobody can act on. Records mix structured attributes — unit price, quality score, supplier, sourcing country and region, product category, assessor — with unstructured assessment notes written in free text. The structured half gets averaged into a monthly report; the free-text half is never read at scale at all.
@@ -12,13 +16,13 @@ This project builds an end-to-end analytics platform in Snowflake against a prod
 
 The build covers four areas:
 
-**Medallion Architecture:** A three-schema design (`BRONZE` / `SILVER` / `GOLD`) inside `DB_TEAM_ROCKSTARS`, separating raw immutable records from conformed dimensional data and from aggregated, business-ready tables.
+* **Medallion Architecture:** A three-schema design (`BRONZE` / `SILVER` / `GOLD`) inside `DB_TEAM_ROCKSTARS`, separating raw immutable records from conformed dimensional data and from aggregated, business-ready tables.
 
-**Automated Ingestion Pipeline:** Snowpipe auto-ingest into Bronze, a Snowflake Stream to track new inserts, and stored procedures to propagate changes into Silver and Gold.
+* **Automated Ingestion Pipeline:** Snowpipe auto-ingest into Bronze, a Snowflake Stream to track new inserts, and stored procedures to propagate changes into Silver and Gold.
 
-**AI and Semantic Services:** Snowflake Cortex AI SQL functions to enrich raw assessment text, Cortex Search for semantic retrieval over those notes, and Cortex Analyst for natural-language querying of the Silver layer.
+* **AI and Semantic Services:** Snowflake Cortex AI SQL functions to enrich raw assessment text, Cortex Search for semantic retrieval over those notes, and Cortex Analyst for natural-language querying of the Silver layer.
 
-**Consumption Layer:** A Streamlit app served from within Snowflake, giving procurement and category managers filtered access to the Gold tables without writing SQL.
+* **Consumption Layer:** A Streamlit app served from within Snowflake, giving procurement and category managers filtered access to the Gold tables without writing SQL.
 
 The three business questions the Gold layer was designed to answer:
 
